@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.product_title }}</title>
+</head>
+<body>
+    <h1>{{ product.product_title }}</h1>
+    <img src="{{ product.product_images.large.0 }}" alt="{{ product.product_title }}" style="max-width:300px;">
+    <p><strong>Category:</strong> {{ product.category }}</p>
+    <p><strong>Average Rating:</strong> {{ product.product_average_rating }}</p>
+    <p><strong>Store:</strong> {{ product.store }}</p>
+
+    <h2>Reviews</h2>
+    <ul>
+        {% for review in reviews %}
+            <li>
+                <p><strong>Title:</strong> {{ review.review_title }}</p>
+                <p><strong>Review:</strong> {{ review.review_text }}</p>
+                <p><strong>Sentiment:</strong> {{ review.Sentiment }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'home' %}">Back to Home</a>
+</body>
+</html>
+
+

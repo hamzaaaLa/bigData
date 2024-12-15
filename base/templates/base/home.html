@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+</head>
+<body>
+    <h1>Products and Reviews</h1>
+    <ul>
+        {% for product in products %}
+            <li>
+                <a href="{% url 'product_detail' product.product_id %}">
+                    {{ product.product_title }}
+                </a>
+                <br>
+                <img src="{{ product.product_image.0 }}" alt="{{ product.product_title }}" style="max-width:100px;">
+                <p><strong>Category:</strong> {{ product.category }}</p>
+                <p><strong>Average Rating:</strong> {{ product.average_rating }}</p>
+                <p><strong>Store:</strong> {{ product.store }}</p>
+                <p>
+                    <strong>Sentiment Analysis:</strong>
+                    Positive: {{ product.positive_reviews }} |
+                    Neutral: {{ product.neutral_reviews }} |
+                    Negative: {{ product.negative_reviews }}
+                </p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+
